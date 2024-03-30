@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 #from django.contrib import messages
-from datetime import datetime
+#from datetime import datetime
 from .restapis import get_request, analyze_review_sentiments, post_review
 import logging
 import json
@@ -24,11 +24,13 @@ def login_user(request):
         response_data["status"] = "Authenticated"
     return JsonResponse(response_data)
 
+
 def logout_user(request):
     logout(request)
     return JsonResponse({"userName": ""})
-
 @csrf_exempt
+
+
 def registration(request):
     data = json.loads(request.body)
     username = data.get('userName', '')
@@ -37,16 +39,15 @@ def registration(request):
     last_name = data.get('lastName', '')
     email = data.get('email', '')
     username_exist = False
-    email_exist = False
-    
+    #email_exist = False
     try:
         User.objects.get(username=username)
         username_exist = True
     except User.DoesNotExist:
         logger.debug("{} is a new user".format(username))
-    
     if not username_exist:
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, password=password, email=email)
+        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, 
+        password=password, email=email)
         login(request, user)
         return JsonResponse({"userName": username, "status": "Authenticated"})
     else:
@@ -63,11 +64,10 @@ def get_dealer_reviews(request, dealer_id):
     if dealer_id:
         endpoint = "/fetchReviews/dealer/" + str(dealer_id)
         reviews = get_request(endpoint)
-        
         for review_detail in reviews:
             response = analyze_review_sentiments(review_detail['review'])
             review_detail['sentiment'] = response['sentiment']
-        
+            
         return JsonResponse({"status": 200, "reviews": reviews})
     else:
         return JsonResponse({"status": 400, "message": "Bad Request"})
