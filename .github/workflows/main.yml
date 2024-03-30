@@ -29,15 +29,15 @@ jobs:
         find . -name "*.py" -exec flake8 {} +
         echo "Linted all the python files successfully"
   lint_js:
-      name: Lint JavaScript Files
-      runs-on: ubuntu-latest
-      steps:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 14  # Or specify the version of Node.js you need
       - name: Install JSHint
         run: npm install jshint --global
       - name: Run Linter
