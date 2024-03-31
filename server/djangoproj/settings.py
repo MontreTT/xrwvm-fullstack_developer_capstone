@@ -150,8 +150,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/static'),
     os.path.join(BASE_DIR, 'frontend/build'),
     os.path.join(BASE_DIR, 'frontend/build/static'),
-    '/home/project/xrwvm-fullstack_developer_capstone/server/frontend/build',
-    '/home/project/xrwvm-fullstack_developer_capstone/server/frontend/build/'
-    'static',
-    '/home/project/xrwvm-fullstack_developer_capstone/server/frontend/public',
+    
 ]

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 # from django.contrib import messages
 # from datetime import datetime
-from .restapis import get_request, analyze_review_sentiments, # post_review
+from .restapis import get_request, analyze_review_sentiments # ,  post_review
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -92,7 +92,8 @@ def add_review(request):
             # response = post_review(data)
             return JsonResponse({"status": 200})
         except Exception as e:
-            return JsonResponse({"status": 401, "message": f"Error in 
-            posting review: {e}"})
+            return JsonResponse({"status": 401, "message": f"Error in "
+            f"posting review: {e}"})
+
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
