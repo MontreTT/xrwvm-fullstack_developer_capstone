@@ -6,8 +6,8 @@ load_dotenv()
 
 # Define backend and sentiment analyzer URLs
 BACKEND_URL = os.getenv('backend_url', default="http://localhost:3030")
-SENTIMENT_ANALYZER_URL = os.
-getenv('sentiment_analyzer_url', default="http://localhost:5050/")
+SENTIMENT_ANALYZER_URL = os.getenv('sentiment_analyzer_url', 
+                                   default="http://localhost:5050/")
 
 
 def get_request(endpoint, **kwargs):
