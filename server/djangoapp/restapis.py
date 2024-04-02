@@ -24,6 +24,8 @@ def get_request(endpoint, **kwargs):
 
 
 def analyze_review_sentiments(text):
+    print("nigga")
+    print(SENTIMENT_ANALYZER_URL)
     request_url = f"{SENTIMENT_ANALYZER_URL}analyze/{text}"
     try:
         response = requests.get(request_url)
