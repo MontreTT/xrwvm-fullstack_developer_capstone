@@ -15,11 +15,12 @@ class CarMake(models.Model):
     def __str__(self):
         return self.name  # Return the name as the string representation
 
+
 class CarModel(models.Model):
-    car_make = models\
+    car_make = models \
     .ForeignKey(CarMake, on_delete=models.CASCADE)  # Many-to-One relationship
     name = models.CharField(max_length=100)
-    dealer_id = models\
+    dealer_id = models \
     .IntegerField(default=0)  # Replace 0 with the desired default value
     CAR_TYPES = [
         ('SEDAN', 'Sedan'),
