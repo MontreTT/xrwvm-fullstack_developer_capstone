@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 # from django.contrib import messages
 # from datetime import datetime
-from .restapis import get_request, analyze_review_sentiments , post_review
+from .restapis import get_request, post_review, # analyze_review_sentiments
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -72,7 +72,7 @@ def get_dealerships(request, state="All"):
 
 
 def get_dealer_reviews(request, dealer_id):
-    if(dealer_id):
+    if(dealer_id): 
         endpoint = "/fetchReviews/dealer/"+str(dealer_id)
         reviews = get_request(endpoint)
         for review_detail in reviews:
@@ -80,29 +80,29 @@ def get_dealer_reviews(request, dealer_id):
             # response = analyze_review_sentiments(review_detail['review'])
             # print(response)
             # review_detail['sentiment'] = response['sentiment']
-        return JsonResponse({"status":200,"reviews":reviews})
+        return JsonResponse({"status": 200, "reviews" : reviews})
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status": 400, "message": "Bad Request"})
 
 
 def get_dealer_details(request, dealer_id):
-    if(dealer_id):
+    if(dealer_id): 
         endpoint = "/fetchDealer/"+str(dealer_id)
         dealership = get_request(endpoint)
-        return JsonResponse({"status":200,"dealer":dealership})
+        return JsonResponse({"status": 200, "dealer": dealership})
     else:
-        return JsonResponse({"status":400,"message":"Bad Request"})
+        return JsonResponse({"status": 400, "message": "Bad Request"})
 
 
 def add_review(request):
     if not request.user.is_anonymous:
         data = json.loads(request.body)
         try:
-            response = post_review(data)
+           # response = post_review(data)
             return JsonResponse({"status": 200})
         except Exception as e:
             return JsonResponse({"status": 401, "message": f"Error in "
-                                  f"posting review: {e}"})
+                                 f"posting review: {e}"})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
 
