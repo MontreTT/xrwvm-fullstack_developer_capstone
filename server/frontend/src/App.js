@@ -7,7 +7,7 @@ import Dealer from "./components/Dealers/Dealer";
 import PostReview from "./components/Dealers/PostReview";
 import { Routes, Route } from "react-router-dom";
 
-
+/* jshint ignore:start */
 function App() {
   return (
     <Routes>
@@ -19,5 +19,5 @@ function App() {
     </Routes>
   );
 }
-
+/* jshint ignore:end */
 export default App;
