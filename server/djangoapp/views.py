@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 # from django.contrib import messages
 # from datetime import datetime
-from .restapis import get_request,  # post_review  , analyze_review_sentiments
+from .restapis import get_request,  # post_review   analyze_review_sentiments
 import logging
 import json
 from django.views.decorators.csrf import csrf_exempt
