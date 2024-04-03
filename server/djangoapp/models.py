@@ -18,7 +18,7 @@ class CarMake(models.Model):
 
 class CarModel(models.Model):
     car_make = models \
-        .ForeignKey(CarMake, on_delete=models.CASCADE)  
+        .ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     dealer_id = models \
         .IntegerField(default=0)  # Replace 0 with the desired default value
