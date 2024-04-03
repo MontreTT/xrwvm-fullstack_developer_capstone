@@ -18,7 +18,7 @@ urlpatterns = [
          name='dealer_details'),
     path(route='get_cars', view=views.get_cars, name='getcars'),
     path(route='get_dealers', view=views.get_dealerships, name='get_dealers'),
-    
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
